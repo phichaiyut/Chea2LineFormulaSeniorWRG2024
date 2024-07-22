@@ -11,7 +11,7 @@ oled.clear();
   oled.mode(0);                 //หมุนหน้าจอ 0 องศา
   oled.textSize(1);             //กำหนดขนาดตัวอักษร
   oled.text(0,0,"Chea 2 Robotics"); //กำหนดข้อความที่จะแสดง
-  oled.text(1,0,"     WRG 2024    ");
+  oled.text(1,0,"WRG 2024 Senior");
   oled.text(2,0,"OK : Normal");  
   oled.text(3,0,"OK>2s Caribrate");
   oled.text(4,0,"A : AutoCaribrate");
