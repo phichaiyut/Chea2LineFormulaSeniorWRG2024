@@ -1,5 +1,5 @@
 #include <POP32.h>
-#define NUM_SENSORS 8 //จำนวนเซนเซอร์
+#define NUM_SENSORS 8
 #define MaxSpeed 100
 #define MinSpeed -100
 
@@ -58,7 +58,7 @@ void setup() {
           beep(1);
           while(SW_A())  {}  //wait unpress SW A button
           if(ReadTimer() >= SwitchTime) {ShowReadCalibrate();} //Mode=Mode1;
-          else {CalibrateSensor(20, 200); SW_OK_press();beep(1);} //Mode=Mode2;
+          else {ShowCalibate();CalibrateSensor(20, 200);beep(1);beep(1); FinishCalibate(); SW_OK_press();beep(1);} //Mode=Mode2;
           SW_OK_Status = Yes;
        }
        if(SW_B()) 
@@ -78,7 +78,7 @@ void setup() {
 
               //ฟังก์ชันทั่วไป
   //TestMotor(); //ทดสอบมอเตอร์วิ่งถูกต้องหรือไม่ โดยการวิ่งไปข้างหน้า
-  //ForwardSpeedTime(70, 1000); //เดินหน้าตรง ForwardSpeedTime(ความเร็วมอเตอร์,เวลาที่ใช้);
+  // ForwardSpeedTime(70, 1000); //เดินหน้าตรง ForwardSpeedTime(ความเร็วมอเตอร์,เวลาที่ใช้);
   //BackwardSpeedTime(70, 1000); //ถอยหลังตรง BackwardSpeedTime(ความเร็วมอเตอร์,เวลาที่ใช้);
   //Left(70 ,250); //เลี้ยวซ้าย (ความเร็วมอเตอร์,เวลาที่ใช้);
   //Right(70 , 250); //เลี้ยวขวา (ความเร็วมอเตอร์,เวลาที่ใช้);
@@ -93,14 +93,16 @@ void setup() {
 // ShowRead_sumValue_sensor();  //แสดงหน้าจอผลรวมเซนเซอร์ที่เจอเส้น
 
 
-              //คำสั่งเจอแบบต่างๆ >> 'l'=เลี้ยวซ้าย ,'r'=เลี้ยวขวา ,'p'=ตรง ,'s'=หยุด  
+              //คำสั่งเจอแบบต่างๆ >> 'l'=เลี้ยวซ้าย ,'r'=เลี้ยวขวา ,'p'=ตรง ,'s'=หยุด
+  // TuneJc(70);  
   //TracJC(int MotorSpeed,int Time); //TracJC(speed,เวลาที่ใช้ข้ามแยก); //โค้ดสำหรับ Junior
-  // TrackCrossL(40, 0.034, 0.34, 'r');  // ใช้เซนเซอร์คู่ซ้ายในการนับแยก
+  TrackCrossL(70, 0.055, 2.30, 'p');  // ใช้เซนเซอร์คู่ซ้ายในการนับแยก
+  TrackCrossL(70, 0.055, 2.30, 's');  // ใช้เซนเซอร์คู่ซ้ายในการนับแยก
   // TrackCrossR(40, 0.034, 0.34, 'r');  // ใช้เซนเซอร์คู่ขวาในการนับแยก
   // TrackCrossC(40, 0.034, 0.34, 'r');  // ใช้เซนเซอร์คู่กลางในการนับแยก
   // TrackCross(40, 0.034, 0.34, 'r');   // PID จนกว่าจะเจอแยก TrackCross(Speed, Kp , Kd , 'คำสั่งเจอแยก'); 
-    TrackTime(70, 0.055, 2.30, 10000);                                                   // PID ด้วยเวลา TrackTime(Speed, Kp , Kd, เวลา); >> 1000 = 1 วินาที
-    //TrackSumValue(70, 0.055, 2.30, 4000, 's');                                           //TrackSumValue(speed, kp, kd, ค่าของเซนเซอร์, เงื่อนไข);
+    // TrackTime(70, 0.055, 2.30, 10000);                                                   // PID ด้วยเวลา TrackTime(Speed, Kp , Kd, เวลา); >> 1000 = 1 วินาที
+    // TrackSumValue(70, 0.055, 2.30, 4000, 's');                                           //TrackSumValue(speed, kp, kd, ค่าของเซนเซอร์, เงื่อนไข);
 
 
 

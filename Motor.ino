@@ -3,7 +3,8 @@ void Motor(int leftsp, int rightsp) {
   motor(2,rightsp);
 }
 void MotorStop() {
-  AO();
+   motor(1,0);
+  motor(2,0);
 }
 void TuneMotor(int BaseSpeed){
   
@@ -50,7 +51,7 @@ void TuneMotor(int BaseSpeed){
   else if(BaseSpeed<=70)
   {
     LeftBaseSpeed = BaseSpeed-0;
-    RightBaseSpeed = BaseSpeed-0;
+    RightBaseSpeed = BaseSpeed-5;
     BackLeftBaseSpeed = BaseSpeed-0;
     BackRightBaseSpeed = BaseSpeed-0;
     // PID_Kp = 0.030;       //forward PID

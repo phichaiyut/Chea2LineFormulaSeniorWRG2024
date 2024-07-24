@@ -1,7 +1,7 @@
 void Finish() {
   long int RunningTime;
   RunningTime = ReadTimer2(); 
-  AO();
+  MotorStop();
   beep(0);
   oled.textSize(1);
   oled.clear();

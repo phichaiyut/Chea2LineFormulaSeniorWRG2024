@@ -17,16 +17,16 @@ void TuneJc(int BaseSpeed){
 
   if(BaseSpeed<=50) ForwardSpeedTime(BaseSpeed,100);
   else if(BaseSpeed<=60) ForwardSpeedTime(BaseSpeed,50);
-  else if(BaseSpeed<=70)ForwardSpeedTime(BaseSpeed,20);
+  else if(BaseSpeed<=70)ForwardSpeedTime(BaseSpeed,80);
   else if(BaseSpeed<=80) ForwardSpeedTime(BaseSpeed,10);
   //else if(BaseSpeed<=90) ForwardSpeedTime(BaseSpeed,150);
   //else if(BaseSpeed<=100) ForwardSpeedTime(BaseSpeed,150);
 
 }
 void TrackSelect(int spd, char x) {
-  if (x == 's' || x == 'S') {
+  if (x == 's') {
     MotorStop();
-  } else if (x == 'p' || x == 'P') {
+  } else if (x == 'p') {
     Motor(spd, spd);
     delay(30);
     while (1) {
@@ -40,9 +40,9 @@ void TrackSelect(int spd, char x) {
     }
 
 
-  } else if (x == 'l' || x == 'L') {
+  } else if (x == 'l') {
     TurnLeft();
-  } else if (x == 'r' || x == 'R') {
+  } else if (x == 'r') {
     TurnRight();
   }
 }
@@ -103,7 +103,7 @@ void TrackDistance(int Speed, float Kp, float Kd) {
   while (1) {
     PID(Speed, Kp, Kd);
     ReadCalibrate();
-    if (analogRead(A9) < 550) {
+    if (analogRead(8) < 550) {
       MotorStop();
       beep(1);
       break;
@@ -114,7 +114,7 @@ void TrackDist(int Speed, float Kp, float Kd) {
   while (1) {
     PID(Speed, Kp, Kd);
     ReadCalibrate();
-    if (analogRead(9) == distt) {
+    if (analogRead(8) == distt) {
       MotorStop();
       beep(1);
       break;
@@ -134,19 +134,19 @@ void TrackTime(int Speed, float Kp, float Kd, int TotalTime) {
 void TrackSumValue(int Speed, float Kp, float Kd, int value, char select) {
   while (1) {
     PID(Speed,Kp,Kd);
-    
-    if (Read_sumValue_sensor() >= value) {
+       if (Read_sumValue_sensor() >= value) {
       beep(1);
       break;
     }
+    
   }
   TuneJc(Speed);
   TrackSelect(Speed, select);
 }
 
 int Read_sumValue_sensor(){
-	unsigned int x = 0;
-  unsigned int SumValue = 0;
+	 int value = 0;
+   int SumValue = 0;
     if (LineColor == 0) {
    
     for (int i = 0; i < NUM_SENSORS; i++) {
@@ -154,24 +154,40 @@ int Read_sumValue_sensor(){
       
       calmin = MinValue[i];
       calmax = MaxValue[i];
-      x = map(analog(i), calmin, calmax, 0, 1000);
-      if (x < 0) x = 0;
-      if (x > 1000) x = 1000;
-      SumValue += x;
+      value = map(analog(i), calmin, calmax, 0, 1000);
+      if (value < 0) value = 0;
+      if (value > 1000) value = 1000;
+      SumValue += value;
         }
   } else {
    
     for (int i = 0; i < NUM_SENSORS; i++) {
       unsigned int calmin, calmax;
       
-      calmin = MinValue[i];
+     calmin = MinValue[i];
       calmax = MaxValue[i];
-      x = map(analog(i), calmin, calmax, 1000, 0);
-      if (x < 0) x = 0;
-      if (x > 1000) x = 1000;
-      SumValue += x;
+      value = map(analog(i), calmin, calmax, 1000, 0);
+      if (value < 0) value = 0;
+      if (value > 1000) value = 1000;
+      SumValue += value;
       }
      
   } 
   return SumValue;
 }
+
+// int Read_sumValue_sensor(){
+// 	int value = 0;
+// 	for(int i = 0;i<NUM_SENSORS;i++){
+// 		if(LineColor == 0){
+      
+//       value +=  map(analog(i), MinValue[i], MaxValue[i],0, 1000);
+	       
+// 	    }
+// 	    else {
+// 	      value +=  map(analog(i), MinValue[i], MaxValue[i], 1000, 0);
+// 	    }	
+// 	}
+	 
+//     return value;
+// }
