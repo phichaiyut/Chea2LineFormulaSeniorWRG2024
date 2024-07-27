@@ -3,8 +3,7 @@ void Motor(int leftsp, int rightsp) {
   motor(2,rightsp);
 }
 void MotorStop() {
-   motor(1,0);
-  motor(2,0);
+   ao();
 }
 void TuneMotor(int BaseSpeed){
   

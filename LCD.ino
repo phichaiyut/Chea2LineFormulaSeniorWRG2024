@@ -17,14 +17,14 @@ oled.clear();
   oled.clear();                 //เคลียร์หน้าจอ
   oled.mode(0);                 //หมุนหน้าจอ 0 องศา
   oled.textSize(1);             //กำหนดขนาดตัวอักษร
-  oled.text(0,0,"Chea 2 Robotics"); //กำหนดข้อความที่จะแสดง
-  oled.text(1,0,"WRG 2024 Senior");
+  oled.text(0,0,"  Chea 2 Robotics"); //กำหนดข้อความที่จะแสดง
+  oled.text(1,0,"  WRG 2024 Senior");
   oled.text(2,0," SW_OK : Normal");  
-  oled.text(3,0," SW_OK>2s Caribrate");
+  oled.text(3,0," SW_OK > 2s Caribrate");
   oled.text(4,0," SW_A : AutoCaribrate");
-  oled.text(5,0," SW_A>2s : ShowCaribrate");
+  oled.text(5,0," SW_A > 2s : ShowCaribrate");
   oled.text(6,0," SW_B : Sumvalue");
-  oled.text(7,0," SW_B>2s : ShowAnalog");
+  oled.text(7,0," SW_B > 2s : ShowAnalog");
   oled.show();  
   }
 
@@ -69,6 +69,7 @@ while(1){
 
 void ShowCaliberateRobotSensor(){
   beep(0);
+  delay(300);
   oled.clear();
   oled.text(0,0,"Press OK caribrate");
   oled.show();
@@ -77,29 +78,31 @@ void ShowCaliberateRobotSensor(){
   CalibrateSensor(20, 200);
   beep(0);
   oled.clear();
-  oled.text(0,0,"Min Sensor");
-  oled.text(1,0,"%d", MinValue[0]);
-  oled.text(2,0,"%d", MinValue[1]);
-  oled.text(3,0,"%d", MinValue[2]);
-  oled.text(4,0,"%d", MinValue[3]);
-  oled.text(5,0,"%d", MinValue[4]);
-  oled.text(6,0,"%d", MinValue[5]);
-  oled.text(7,0,"%d", MinValue[6]);
-  oled.text(1,10,"%d", MinValue[7]);
+  oled.text(0,0,"SensorValueMin");
+  oled.text(1,0,"A0 : %d", MinValue[0]);
+  oled.text(2,0,"A1 : %d", MinValue[1]);
+  oled.text(3,0,"A2 : %d", MinValue[2]);
+  oled.text(4,0,"A3 : %d", MinValue[3]);
+  oled.text(5,0,"A4 : %d", MinValue[4]);
+  oled.text(6,0,"A5 : %d", MinValue[5]);
+  oled.text(7,0,"A6 : %d", MinValue[6]);
+  oled.text(1,10,"A7 : %d", MinValue[7]);
 
   oled.show();
 
    SW_OK_press();        // รอจนกว่าจะกดปุ่ม OK
+   beep(0);
   oled.clear();
-  oled.text(1,0,"%d", MaxValue[0]);
-  oled.text(1,1,"%d", MaxValue[0]);
-  oled.text(2,1,"%d", MaxValue[1]);
-  oled.text(3,1,"%d", MaxValue[2]);
-  oled.text(4,1,"%d", MaxValue[3]);
-  oled.text(5,1,"%d", MaxValue[4]);
-  oled.text(6,1,"%d", MaxValue[5]);
-  oled.text(7,1,"%d", MaxValue[6]);
-  oled.text(1,10,"%d", MaxValue[7]);
+  oled.text(0,0,"SensorValueMax");
+  oled.text(1,0,"A0 : %d", MaxValue[0]);
+  oled.text(1,1,"A1 : %d", MaxValue[1]);
+  oled.text(2,1,"A2 : %d", MaxValue[2]);
+  oled.text(3,1,"A3 : %d", MaxValue[3]);
+  oled.text(4,1,"A4 : %d", MaxValue[4]);
+  oled.text(5,1,"A5 : %d", MaxValue[5]);
+  oled.text(6,1,"A6 : %d", MaxValue[6]);
+  oled.text(7,1,"A7 : %d", MaxValue[7]);
+  oled.text(1,10,"A8 : %d", MaxValue[8]);
   oled.show();    
 
 }
