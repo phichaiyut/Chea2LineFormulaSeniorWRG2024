@@ -18,7 +18,7 @@ unsigned short distt = 0;
 long Timer, Timer2, Timer3;
 int LeftBaseSpeed, RightBaseSpeed,BackLeftBaseSpeed,BackRightBaseSpeed,SW_OK_Status;
 void setup() {
-  beep(1);
+  beep();
  Serial.begin(9600);
   SW_OK_Status = No;                                                                 // Setup หุ่นยนต์
   //SensorValue(462, 445, 447, 470, 443, 445, 448, 456, 2828, 2777, 2757, 2854, 2807, 2823, 2828, 2854);  //ค่าแสง
@@ -71,6 +71,7 @@ void setup() {
           SW_OK_Status = Yes;
        }
       }
+      StartRound();
   //SW_OK_press();        // รอจนกว่าจะกดปุ่ม OK
   delay(300);
   StartTimer2();

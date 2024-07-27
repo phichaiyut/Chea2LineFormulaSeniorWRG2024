@@ -11,8 +11,16 @@ oled.clear();
   oled.text(3,0," caribrate Front Sensor");
   oled.text(3,0,"Press OK To Start");
  
-  oled.show();}
+  oled.show();
+  }
   
+  void StartRound(){
+  oled.clear();
+  oled.text(2,0,"          Start   ");
+  oled.text(3,0," Line Formula");
+ 
+  oled.show();
+  }
   void ShowStart(){
   oled.clear();                 //เคลียร์หน้าจอ
   oled.mode(0);                 //หมุนหน้าจอ 0 องศา

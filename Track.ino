@@ -28,7 +28,7 @@ void TrackSelect(int spd, char x) {
     MotorStop();
   } else if (x == 'p') {
     Motor(spd, spd);
-    delay(30);
+    delay(10);
     while (1) {
       Motor(spd, spd);
       ReadCalibrate();
@@ -52,8 +52,8 @@ void TrackCross(int Speed, float Kp, float Kd, char select) {
     PID(Speed, Kp, Kd);
     ReadCalibrate();
     if ((F[1] > 550 && F[6] > 550) || (F[0] > 550 && F[3] > 550) || (F[4] > 550 && F[7] > 550)) {
-       beep(0);
-      TrackSelect(Speed, select); 
+       Beep(10);
+      //TrackSelect(Speed, select); 
       break;
     }
   }
@@ -66,7 +66,7 @@ void TrackCrossC(int Speed, float Kp, float Kd, char select) {
     PID(Speed, Kp, Kd);
     ReadCalibrate();
     if ((F[1] > 550 && F[6] > 550)) {
-       beep(0);
+       Beep(10);
       TrackSelect(Speed, select); 
       break;
     }
@@ -80,7 +80,7 @@ void TrackCrossR(int Speed, float Kp, float Kd, char select) {
     PID(Speed, Kp, Kd);
     ReadCalibrate();
     if ((F[4] > 550 && F[7] > 550)) {
-       beep(0);
+       Beep(10);
       TrackSelect(Speed, select); 
       break;
     }
@@ -94,11 +94,11 @@ void TrackCrossL(int Speed, float Kp, float Kd, char select) {
     PID(Speed, Kp, Kd);
     ReadCalibrate();
     if ((F[0] > 550 && F[3] > 550)) {
-      beep(1);
+      Beep(10);
       break;
     }
   }
-  TuneJc(Speed);
+  //TuneJc(Speed);
   TrackSelect(Speed, select);
 }
 
@@ -108,19 +108,25 @@ void TrackDistance(int Speed, float Kp, float Kd) {
     ReadCalibrate();
     if (analogRead(8) < 550) {
       MotorStop();
-      beep(1);
+      Beep(10);
       break;
     }
   }
 }
-void TrackDist(int Speed, float Kp, float Kd) {
+void TrackDistanceObstacleDetection(int Speed, float Kp, float Kd) {
   while (1) {
     PID(Speed, Kp, Kd);
     ReadCalibrate();
-    if (analogRead(8) == distt) {
-      MotorStop();
-      beep(1);
-      break;
+    
+    // ตรวจสอบเซ็นเซอร์ที่ตำแหน่ง 9 เพื่อตรวจจับสิ่งกีดขวาง
+    if (analogRead(9) < 550) {
+      MotorStop(); // หยุดมอเตอร์ทั้งหมด
+      Beep(5); // สัญญาณเสียงแจ้งเตือน
+
+      // รอจนกว่าสิ่งกีดขวางจะถูกเอาออก
+      while (analogRead(9) < 550) {
+        delay(100); // รอเป็นระยะเวลาสั้น ๆ แล้วตรวจสอบอีกครั้ง
+      }
     }
   }
 }
@@ -131,7 +137,7 @@ void TrackTime(int Speed, float Kp, float Kd, int TotalTime) {
   while (millis() <= EndTime) {
     PID(Speed, Kp, Kd);
   }
-  beep(1);
+  Beep(10);
 }
 
 
@@ -140,13 +146,13 @@ void TrackSumValue(int Speed, float Kp, float Kd, int values, char select) {
   while (1) {
     PID(Speed,Kp,Kd);
      if (Read_sumValue_sensor() > values) {
-      beep(0);
-      TrackSelect(Speed, select);   
+      Beep(10);
+      PID(Speed, 0, 0);  
       break;
     }
     
   }
-
+  TrackSelect(Speed, select); 
 }
 
 // ฟังก์ชันคำนวณผลรวมของค่าเซ็นเซอร์
