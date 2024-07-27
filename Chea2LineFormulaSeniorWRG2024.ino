@@ -9,7 +9,7 @@
 int LastError;
 int MinValue[NUM_SENSORS];
 int MaxValue[NUM_SENSORS];
-//uint8_t F_PIN[NUM_SENSORS] = { 0, 1, 2, 3, 4, 5, 6, 7 };
+
 int F[NUM_SENSORS];
 int LTurnSpdL, LTurnSpdR, TurnDelayL;
 int RTurnSpdL, RTurnSpdR, TurnDelayR;

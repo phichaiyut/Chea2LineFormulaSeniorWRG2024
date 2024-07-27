@@ -164,8 +164,8 @@ int Read_sumValue_sensor() {
             value = map(analog(i), calmin, calmax, 1000, 0);
         }
 
-        // if (value < 0) value = 0;
-        // if (value > 1000) value = 1000;
+        if (value < 0) value = 0;
+        if (value > 1000) value = 1000;
         SumValue += value;
     }
 
