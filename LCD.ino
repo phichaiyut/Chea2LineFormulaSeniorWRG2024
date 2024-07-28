@@ -70,7 +70,6 @@ while(1){
   oled.text(6,0,"A5 : %d", F[5]);
   oled.text(7,0,"A6 : %d", F[6]);
   oled.text(1,10,"A7 : %d", F[7]);
-  oled.text(2,10,"A8 : %d", F[8]);
   oled.show();    
 }
 }
@@ -102,15 +101,14 @@ void ShowCaliberateRobotSensor(){
    beep(0);
   oled.clear();
   oled.text(0,0,"SensorValueMax");
-  oled.text(1,0,"A0 : %d", MaxValue[0]);
-  oled.text(1,1,"A1 : %d", MaxValue[1]);
-  oled.text(2,1,"A2 : %d", MaxValue[2]);
-  oled.text(3,1,"A3 : %d", MaxValue[3]);
-  oled.text(4,1,"A4 : %d", MaxValue[4]);
-  oled.text(5,1,"A5 : %d", MaxValue[5]);
-  oled.text(6,1,"A6 : %d", MaxValue[6]);
-  oled.text(7,1,"A7 : %d", MaxValue[7]);
-  oled.text(1,10,"A8 : %d", MaxValue[8]);
+  oled.text(1,1,"A0 : %d", MaxValue[0]);
+  oled.text(2,1,"A1 : %d", MaxValue[1]);
+  oled.text(4,1,"A2 : %d", MaxValue[2]);
+  oled.text(5,1,"A3 : %d", MaxValue[3]);
+  oled.text(6,1,"A4 : %d", MaxValue[4]);
+  oled.text(7,1,"A5 : %d", MaxValue[5]);
+  oled.text(1,10,"A6 : %d", MaxValue[6]);
+  oled.text(1,10,"A7 : %d", MaxValue[7]);
   oled.show();    
 
 }
