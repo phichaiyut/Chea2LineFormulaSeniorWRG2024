@@ -58,7 +58,7 @@ void TrackCross(int Speed, float Kp, float Kd, char select) {
     }
   }
  // TuneJc(Speed);
- // TrackSelect(Speed, select);
+ TrackSelect(Speed, select);
 }
 
 void TrackCrossC(int Speed, float Kp, float Kd, char select) {
@@ -67,12 +67,12 @@ void TrackCrossC(int Speed, float Kp, float Kd, char select) {
     ReadCalibrate();
     if ((F[1] > 550 && F[6] > 550)) {
        Beep(10);
-      TrackSelect(Speed, select); 
+      // TrackSelect(Speed, select); 
       break;
     }
   }
   //TuneJc(Speed);
-  //TrackSelect(Speed, select);
+  TrackSelect(Speed, select);
 }
 
 void TrackCrossR(int Speed, float Kp, float Kd, char select) {
@@ -86,7 +86,7 @@ void TrackCrossR(int Speed, float Kp, float Kd, char select) {
     }
   }
 
-  //TrackSelect(Speed, select);
+  TrackSelect(Speed, select);
 }
 
 void TrackCrossL(int Speed, float Kp, float Kd, char select) {
