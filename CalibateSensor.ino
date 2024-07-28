@@ -15,6 +15,7 @@ void CaliberateRobotSensor() {
     if (i < NUM_SENSORS - 1) Serial.print(",");
     else Serial.print(");");
   }
+  Serial.println("  ");
   Serial.print("SensorValueMax(");
   for (int i = 0; i < NUM_SENSORS; i++) {
     Serial.print(MaxValue[i]);

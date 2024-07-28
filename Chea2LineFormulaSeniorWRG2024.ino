@@ -20,7 +20,7 @@ int LeftBaseSpeed, RightBaseSpeed,BackLeftBaseSpeed,BackRightBaseSpeed,SW_OK_Sta
 void setup() {
   beep();
  Serial.begin(9600);
-  SW_OK_Status = No;                                                                 // Setup หุ่นยนต์
+  SW_OK_Status = No;                                                                
   //SensorValue(462, 445, 447, 470, 443, 445, 448, 456, 2828, 2777, 2757, 2854, 2807, 2823, 2828, 2854);  //ค่าแสง
 
   SensorValueMin(462, 445, 447, 470, 443, 445, 448, 456); //ค่าแสงต่ำสุด
