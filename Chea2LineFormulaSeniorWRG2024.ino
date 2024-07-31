@@ -17,6 +17,7 @@ int LineColor = 0;
 unsigned short distt = 0;
 long Timer, Timer2, Timer3;
 int LeftBaseSpeed, RightBaseSpeed,BackLeftBaseSpeed,BackRightBaseSpeed,SW_OK_Status;
+int InitialSpeed;
 void setup() {
   beep();
  Serial.begin(9600);

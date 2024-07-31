@@ -3,8 +3,15 @@ oled.clear();
   
   oled.text(3,0,"start caribrate Front Sensor");
  
-  oled.show();}
-
+  oled.show();
+  }
+void ShowAutoCalibate(){
+oled.clear();
+  
+  oled.text(3,0,"    AutoCalibrattion");
+ 
+  oled.show();
+  }
   void FinishCalibate(){
 oled.clear();
   oled.text(2,0,"          Finish   ");
@@ -85,7 +92,7 @@ void ShowCaliberateRobotSensor(){
   CalibrateSensor(20, 200);
   beep(0);
   oled.clear();
-  oled.text(0,0,"SensorValueMin");
+  oled.text(0,0,"  SensorValueMin");
   oled.text(1,0,"A0 : %d", MinValue[0]);
   oled.text(2,0,"A1 : %d", MinValue[1]);
   oled.text(3,0,"A2 : %d", MinValue[2]);
@@ -100,15 +107,15 @@ void ShowCaliberateRobotSensor(){
    SW_OK_press();        // รอจนกว่าจะกดปุ่ม OK
    beep(0);
   oled.clear();
-  oled.text(0,0,"SensorValueMax");
+  oled.text(0,0,"  SensorValueMax");
   oled.text(1,1,"A0 : %d", MaxValue[0]);
   oled.text(2,1,"A1 : %d", MaxValue[1]);
-  oled.text(4,1,"A2 : %d", MaxValue[2]);
-  oled.text(5,1,"A3 : %d", MaxValue[3]);
-  oled.text(6,1,"A4 : %d", MaxValue[4]);
-  oled.text(7,1,"A5 : %d", MaxValue[5]);
-  oled.text(1,10,"A6 : %d", MaxValue[6]);
-  oled.text(1,10,"A7 : %d", MaxValue[7]);
+  oled.text(3,1,"A2 : %d", MaxValue[2]);
+  oled.text(4,1,"A3 : %d", MaxValue[3]);
+  oled.text(5,1,"A4 : %d", MaxValue[4]);
+  oled.text(6,1,"A5 : %d", MaxValue[5]);
+  oled.text(7,1,"A6 : %d", MaxValue[6]);
+  oled.text(1,12,"A7 : %d", MaxValue[7]);
   oled.show();    
 
 }
